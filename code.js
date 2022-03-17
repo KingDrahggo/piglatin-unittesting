@@ -1,3 +1,67 @@
+let card = document.querySelector('.card');
+
+let button = document.querySelector('#submit')
+console.log(button)
+
+button.addEventListener('click', function(event){
+    event.preventDefault();
+    console.log('button click')
+
+    let wordChoice = document.querySelector('#word-choice')
+    console.log('name')
+    let word = wordChoice.value
+    console.log(word)
+   
+    let answer = document.getElementsByClassName('answer');
+    card.append(answer)
+
+
+    
+    // encodeVowelWord()
+
+    // Encode words that begin with a vowel sound from english to pig latin
+    // For words that begin with vowel sounds, one just adds "yay" to the end.
+    function encodeVowelWord(word) {
+
+      let vowel = ["a", "e", "i", "o", "u","A", "E", "I", "O", "U"];
+      let emptyWord = "";
+      let firstLetterVowel = word[0];
+      
+        if (vowel.includes(firstLetterVowel)) {
+          word.concat(emptyWord);
+          return `${word}-yay`;
+        } else {
+          return `${word}does not start with vowel`;
+        }
+    }
+    let vowelWord = (encodeVowelWord(word));
+    console.log(vowelWord);
+    answer.innerHTML = `${vowelWord}`;
+
+    // Write your unit tests here
+    console.assert(encodeVowelWord("I"), {
+      test: "create string I-yay",
+      expected: "I-yay",
+      result: encodeVowelWord("I"),
+    });
+    
+      console.assert(encodeVowelWord("eat"), {
+      test: "create string eat-yay",
+      expected: "eat-yay",
+      result: encodeVowelWord("eat"),
+    });
+    
+    // console.assert(encodeVowelWord("eat") === "eat-yay", encodeVowelWord("eat-yay"))
+    console.assert(encodeVowelWord("omelet"), {
+      test: "create string omelet-yay",
+      expected: "omelet-yay",
+      result: encodeVowelWord("omelet"),
+    });
+
+
+})
+
+
 
 /*  --------------------------------------------------------
     encodeVowelWord()
@@ -22,7 +86,7 @@ function encodeVowelWord(word) {
       return `${word}does not start with vowel`;
     }
 }
-console.log(encodeVowelWord(""));
+console.log(encodeVowelWord("ate"));
 
 // Write your unit tests here
 console.assert(encodeVowelWord("I"), {
@@ -70,8 +134,10 @@ function encodeConsonantWord(word) {
   }
   return;
 }
-console.log(encodeConsonantWord("apple"));
+console.log(encodeConsonantWord("mapple"));
 // Write your unit tests here
+
+function test(){
 console.assert(encodeConsonantWord("ape"), {
   test: "create string ape",
   expected: "ape",
@@ -87,6 +153,8 @@ console.assert(encodeConsonantWord("cheers"), {
   expected: "eers-chay",
   result: encodeConsonantWord("cheers"),
 });
+}
+test();
 /*  --------------------------------------------------------
     encodeWord()
 
