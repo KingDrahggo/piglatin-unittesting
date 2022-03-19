@@ -1,5 +1,7 @@
-
+// -----------
 // WORD BUTTON
+// -----------
+
 let card = document.querySelector("#card1");
 
 let wordButton = document.querySelector("#submit-word");
@@ -35,8 +37,10 @@ wordButton.addEventListener("click", function (event) {
   }
 });
 
-
+// ---------------
 // SENTENCE BUTTON
+// ---------------
+
 let card2 = document.querySelector("#card2");
 
 let sentenceButton = document.querySelector("#submit-sentence");
@@ -72,10 +76,15 @@ sentenceButton.addEventListener("click", function (event) {
   }
 });
 
+//-----------------------
 // Open Window in new tab
+// ----------------------
 
 window.open('https://github.com/KingDrahggo/piglatin-unittesting', '_blank');
 
+// ----------------
+// Encode Functions
+// ----------------
 /*  --------------------------------------------------------
     encodeVowelWord()
 
