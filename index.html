@@ -15,18 +15,32 @@
   <body>
     <h1>Pig-Latin/ Unit Testing</h1>
     <h3>
-     Inspect & Console.Log to see results
+     Change words & sentences to Pig-Latin. Check code in GitHub link.
     </h3>
-    <section class="card">
+    <a id="github" href="https://github.com/KingDrahggo/piglatin-unittesting" target="_blank"> <img alt="GitHub" src="GitHub_Logo_White.png"></a>
+    <section id="card1">
       <form id="form">
-      <label for="word-choice">Word</label>
+      <label id="encode-word" for="word-choice">Encode Word</label>
       <input id="word-choice" type="text" placeholder="Type your word here" required/>
-
-      <button id="submit">Submit</button>
-
+      <button id="submit-word">Submit Word</button>
       </form>
-      <div class="answer"></div>
+      <div id="answer">
+        <p id="pig-latin"></p>
+      </div>
     </section>
+
+    <section id="card2">
+      <form id="form2">
+      <label id="encode-sentence" for="sentence-choice">Encode Sentence</label>
+      <input id="sentence-choice" type="text" placeholder="Type your sentence here" required/>
+      <button id="submit-sentence">Submit Sentence</button>
+      </form>
+      <div id="user-sentence">
+        <p id="pig-latin-sentence"></p>
+      </div>
+    </section>
+
     <script src="code.js"></script>
   </body>
 </html>
+

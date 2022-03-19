@@ -1,11 +1,14 @@
 *{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    box-sizing: content-box;
+    
 }
 
 body{
-    background-color: grey;
+    background-color: lightskyblue;
+    max-width: 1000px;
+    max-height: 600px;
 }
 
 h1{
@@ -15,41 +18,167 @@ h1{
     font-size: 100px;
     position: relative;
     top: 80px;
+    left: 250px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px;
+    border-radius: 5px;
 }
 
 h3{
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     font-size: 40px;
     position: relative;
     top: 150px;
+    left: 250px;
 }
 
-input{
+#github{
     display: flex;
+    width: 195px;
+    height: 80px;
     position: relative;
-    top: 80px;
-    left: 200px;
+    top: 400px;
+    left: 650px;
+    background: black;
+    border-radius: 10px;
 }
 
-#submit{
+/* Encode Word */
+#card1{
+    background-color: rgb(158, 65, 65);
+    width: 50%;
+    height: 350px;
     display: flex;
     position: relative;
-    top: 50px;
-    left: 100px;
-    width: 50px;
-    height: 20px;
+    align-content: center;
+    justify-items: center;
+    left: 14%;
+    top: 99px;
 }
-#submit :hover{
+#encode-word{
+    font-size: 8vh;
+    font-weight: 400;
+    display: flex;
+    position: relative;
+    text-indent: 80px;
+    background: white;
+    width: calc(100% + 74px);
+    padding: 5px;
+    border-radius: 2px;
+    box-shadow: black 0px 4px 3px 4px;
+}
+
+#word-choice{
+    display: flex;
+    position: relative;
+    top: 40px;
+    left: 220px;
+    height: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#submit-word{
+    display: flex;
+    position: relative;
+    top: 6px;
+    left: 110px;
+    width: 70px;
+    height: 30px;
+    align-items: center;
+    font-weight: 600;
+}
+#submit-word:hover{
     background-color: black;
-    color: black;
+    color: rgb(255, 255, 255);
     transition: all ease 0.3s;
 }
 
-.answer{
-    height: 300px;
-    width: 300px;
+#answer{
+    height: 100px;
+    width: calc(85% + 75px);
+    display: flex;
+    position: absolute;
+    background-color: white;
+    top: 200px;
+    right: 0px;
+}
+
+#pig-latin{
+    font-size: 40px;
+    font-weight: 200;
     display: flex;
     position: relative;
+    align-self: center;
+    left: 35%;
+}
+
+/* Encode Sentence */
+#card2{
+    background-color: rgb(158, 65, 65);
+    width: 50%;
+    height: 350px;
+    display: flex;
+    position: relative;
+    align-content: center;
+    justify-items: center;
+    left: 86%;
+    bottom: 250px;
+}
+
+#encode-sentence{
+    font-size: 8vh;
+    font-weight: 400;
+    display: flex;
+    position: relative;
+    text-indent: 40px;
+    background: white;
+    width: calc(100% + 25px);
+    padding: 5px;
+    border-radius: 2px;
+    box-shadow: black 0px 4px 3px 4px;
+}
+
+#sentence-choice{
+    display: flex;
+    position: relative;
+    top: 40px;
+    left: 220px;
+    height: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#submit-sentence{
+    display: flex;
+    position: relative;
+    top: 6px;
+    left: 110px;
+    width: 70px;
+    height: 30px;
+    align-items: center;
+    font-weight: 600;
+}
+#submit-sentence:hover{
+    background-color: black;
+    color: rgb(255, 255, 255);
+    transition: all ease 0.3s;
+}
+
+#user-sentence{
+    height: 100px;
+    width: calc(85% + 75px);
+    display: flex;
+    position: absolute;
+    background-color: white;
+    top: 200px;
+    right: 0px;
+}
+
+#pig-latin-sentence{
+    font-size: 25px;
+    font-weight: 200;
 }

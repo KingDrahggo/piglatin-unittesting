@@ -1,67 +1,80 @@
-let card = document.querySelector('.card');
 
-let button = document.querySelector('#submit')
-console.log(button)
+// WORD BUTTON
+let card = document.querySelector("#card1");
 
-button.addEventListener('click', function(event){
-    event.preventDefault();
-    console.log('button click')
+let wordButton = document.querySelector("#submit-word");
+console.log(wordButton);
 
-    let wordChoice = document.querySelector('#word-choice')
-    console.log('name')
-    let word = wordChoice.value
-    console.log(word)
-   
-    let answer = document.getElementsByClassName('answer');
-    card.append(answer)
+wordButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log("button click");
 
+  let wordChoice = document.querySelector("#word-choice");
+  console.log(wordChoice);
+  let word = wordChoice.value;
+  console.log(word);
 
-    
-    // encodeVowelWord()
+  let answer = document.getElementById("answer");
+  let p = document.getElementById('pig-latin')
+  answer.append(p);
 
-    // Encode words that begin with a vowel sound from english to pig latin
-    // For words that begin with vowel sounds, one just adds "yay" to the end.
-    function encodeVowelWord(word) {
+  let newWord = encodeWord(word);
+  console.log(newWord);
+  p.innerHTML += `${newWord}`;
 
-      let vowel = ["a", "e", "i", "o", "u","A", "E", "I", "O", "U"];
-      let emptyWord = "";
-      let firstLetterVowel = word[0];
-      
-        if (vowel.includes(firstLetterVowel)) {
-          word.concat(emptyWord);
-          return `${word}-yay`;
-        } else {
-          return `${word}does not start with vowel`;
-        }
-    }
-    let vowelWord = (encodeVowelWord(word));
-    console.log(vowelWord);
-    answer.innerHTML = `${vowelWord}`;
+  wordChoice.value = "";
+  
+  const removeText = setTimeout(userAnswer, 4000);
 
-    // Write your unit tests here
-    console.assert(encodeVowelWord("I"), {
-      test: "create string I-yay",
-      expected: "I-yay",
-      result: encodeVowelWord("I"),
-    });
-    
-      console.assert(encodeVowelWord("eat"), {
-      test: "create string eat-yay",
-      expected: "eat-yay",
-      result: encodeVowelWord("eat"),
-    });
-    
-    // console.assert(encodeVowelWord("eat") === "eat-yay", encodeVowelWord("eat-yay"))
-    console.assert(encodeVowelWord("omelet"), {
-      test: "create string omelet-yay",
-      expected: "omelet-yay",
-      result: encodeVowelWord("omelet"),
-    });
+  function userAnswer(){
+    p.innerHTML = " ";
+  }
+  
+  function removeAnswer(){
+    clearTimeout(removeText);
+  }
+});
 
 
-})
+// SENTENCE BUTTON
+let card2 = document.querySelector("#card2");
 
+let sentenceButton = document.querySelector("#submit-sentence");
+console.log(sentenceButton);
 
+sentenceButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log("button click");
+
+  let sentenceChoice = document.querySelector("#sentence-choice");
+  console.log(sentenceChoice);
+  let sentence = sentenceChoice.value;
+  console.log(sentence);
+
+  let userSentence = document.getElementById("user-sentence");
+  let p = document.getElementById('pig-latin-sentence')
+  userSentence.append(p);
+
+  let newSentence = encodeText(sentence);
+  console.log(newSentence);
+  p.innerHTML += `${newSentence}`;
+
+  sentenceChoice.value = ""; 
+  
+  const removeText = setTimeout(userAnswer, 4000);
+
+  function userAnswer(){
+    p.innerHTML = " ";
+  }
+  
+  function removeAnswer(){
+    clearTimeout(removeText);
+  }
+});
+
+// Open Window in new tab
+
+window.open('https://github.com/KingDrahggo/piglatin-unittesting', '_blank');
 
 /*  --------------------------------------------------------
     encodeVowelWord()
@@ -74,40 +87,38 @@ button.addEventListener('click', function(event){
         "omelet" becomes "omelet-yay" 
 */
 function encodeVowelWord(word) {
-
-  let vowel = ["a", "e", "i", "o", "u","A", "E", "I", "O", "U"];
+  let vowel = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
   let emptyWord = "";
   let firstLetterVowel = word[0];
-  
-    if (vowel.includes(firstLetterVowel)) {
-      word.concat(emptyWord);
-      return `${word}-yay`;
-    } else {
-      return `${word}does not start with vowel`;
-    }
+
+  if (vowel.includes(firstLetterVowel)) {
+    word.concat(emptyWord);
+    return `${word}-yay`;
+  } 
 }
 console.log(encodeVowelWord("ate"));
 
-// Write your unit tests here
+// Unit Tests 
 console.assert(encodeVowelWord("I"), {
   test: "create string I-yay",
   expected: "I-yay",
   result: encodeVowelWord("I"),
 });
 
-  console.assert(encodeVowelWord("eat"), {
+console.assert(encodeVowelWord("eat"), {
   test: "create string eat-yay",
   expected: "eat-yay",
   result: encodeVowelWord("eat"),
 });
 
-// console.assert(encodeVowelWord("eat") === "eat-yay", encodeVowelWord("eat-yay"))
 console.assert(encodeVowelWord("omelet"), {
   test: "create string omelet-yay",
   expected: "omelet-yay",
   result: encodeVowelWord("omelet"),
 });
-// console.assert(encodeVowelWord("omelet") === "omelet-yay", encodeVowelWord("omelet-yay"))
+
+
+
 /*  --------------------------------------------------------
     encodeConsonantWord()
 
@@ -120,41 +131,40 @@ console.assert(encodeVowelWord("omelet"), {
         "cheers" becomes "eers-chay"
 */
 function encodeConsonantWord(word) {
-  // let vowel = ["a","e","i","o","u"];
-  let firstVowel = word.match(/[aeiou]/);
-  let emptyWord = "";
-  let index = 0;
+  
+  let firstVowel = word.match(/[aeiouAEIOU]/);
   let reachedVowel = word.indexOf(firstVowel);
   for (let index = 0; index < word.length; index++) {
-    if (word[0] === firstVowel[0]) {
-      return `${word} starts with a vowel`;
-    } else if (reachedVowel !== firstVowel[index]) {
-      return (emptyWord = `${word.slice(reachedVowel)}-${word.slice(0,reachedVowel)}ay`);
+    if (reachedVowel !== firstVowel[index]) {
+      let emptyWord = "";
+      return emptyWord = `${word.slice(reachedVowel)}-${word.slice(
+        0,
+        reachedVowel
+      )}ay`;
     }
   }
-  return;
 }
 console.log(encodeConsonantWord("mapple"));
-// Write your unit tests here
 
-function test(){
-console.assert(encodeConsonantWord("ape"), {
-  test: "create string ape",
-  expected: "ape",
-  result: encodeConsonantWord("ape"),
-});
-console.assert(encodeConsonantWord("latin"), {
-  test: "create string atin-lay",
-  expected: "atin-lay",
-  result: encodeConsonantWord("latin"),
-});
-console.assert(encodeConsonantWord("cheers"), {
-  test: "create string eers-chay",
-  expected: "eers-chay",
-  result: encodeConsonantWord("cheers"),
-});
-}
-test();
+// Unit Test
+  console.assert(encodeConsonantWord("ape"), {
+    test: "create string ape",
+    expected: "ape",
+    result: encodeConsonantWord("ape"),
+  });
+  console.assert(encodeConsonantWord("latin"), {
+    test: "create string atin-lay",
+    expected: "atin-lay",
+    result: encodeConsonantWord("latin"),
+  });
+  console.assert(encodeConsonantWord("cheers"), {
+    test: "create string eers-chay",
+    expected: "eers-chay",
+    result: encodeConsonantWord("cheers"),
+  });
+
+
+
 /*  --------------------------------------------------------
     encodeWord()
 
@@ -171,21 +181,22 @@ test();
 function encodeWord(word) {
   let firstVowel = word.match(/[aeiouAEIOU]/);
   let emptyWord = "";
-  
+
   let reachedVowel = word.indexOf(firstVowel);
   for (let index = 0; index < word.length; index++) {
     if (word[0] === firstVowel[0]) {
-      let newVowelWord = encodeVowelWord(word)
-      return newVowelWord.concat(emptyWord)
+      let newVowelWord = encodeVowelWord(word);
+      return newVowelWord.concat(emptyWord);
     } else if (reachedVowel !== firstVowel[index]) {
-      let newConstantWord = encodeConsonantWord(word)
-      return newConstantWord.concat(emptyWord)
+      let newConstantWord = encodeConsonantWord(word);
+      return newConstantWord.concat(emptyWord);
     }
   }
   return;
 }
-console.log(encodeWord("level"))
-// Write your unit test"s here
+console.log(encodeWord("level"));
+
+// Unit Test
 console.assert(encodeWord("ape"), {
   test: "create string ape-yay",
   expected: "ape-yay",
@@ -202,27 +213,28 @@ console.assert(encodeWord("cheers"), {
   result: encodeWord("cheers"),
 });
 
+
+
 /*  --------------------------------------------------------
     encodeText()    
 
     Encode a full sentence or paragraph from english to pig latin.
 */
-function encodeText(text) {
- 
-  let splitText = text.split(" ");
+function encodeText(sentence) {
+  let splitText = sentence.split( ` `);
   let emptyArray = [];
-  for (let i = 0; i < splitText.length; i++){
-    let word = splitText[i]
-    let pigLatinWord = encodeWord(word)
-    emptyArray.push(pigLatinWord)
-  
+  for (let i = 0; i < splitText.length; i++) {
+    let word = splitText[i];
+    let pigLatinWord = encodeWord(word);
+    emptyArray.push(pigLatinWord);
   }
-  let joinedText = emptyArray.join(" ")
-  return joinedText
+  let joinedText = emptyArray.join(` `);
+  return joinedText;
 }
 
-console.log(encodeText("I like turtles"))
-// Write your unit tests here
+console.log(encodeText("I love turtles"));
+
+// Unit Tests
 console.assert(encodeText("I ate an apple"), {
   test: "create sentence: I-yay ate-yay an-yay apple-yay",
   expected: "every word to adhere to piglatin rules",
