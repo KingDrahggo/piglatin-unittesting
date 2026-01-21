@@ -1,6 +1,9 @@
-build:
-  - npm install
-  - npm run build
-
-start:
-  - npm start
+services:
+  - type: web
+    name: piglatin-generator
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18
