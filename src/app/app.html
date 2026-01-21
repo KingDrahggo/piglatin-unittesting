@@ -1,0 +1,62 @@
+<div class="app-container">
+  <header class="main-header">
+    <h1>PIG LATIN <span class="neon-text">GENERATOR</span></h1>
+  </header>
+
+  <main class="content-grid">
+    <!-- Word Translator Card -->
+    <section class="card neon-card">
+      <h2>Word Translator</h2>
+      <div class="input-group">
+        <label for="wordInput">Enter a word</label>
+        <input 
+          type="text" 
+          id="wordInput" 
+          [(ngModel)]="wordInput" 
+          (keyup.enter)="translateWord()"
+          placeholder="e.g. apple"
+          autocomplete="off">
+      </div>
+      
+      <button class="neon-btn" (click)="translateWord()">
+        TRANSLATE
+      </button>
+
+      <div class="output-area">
+        <span class="label">Result:</span>
+        <div class="result-text" [class.has-content]="wordOutput">
+          {{ wordOutput || '...' }}
+        </div>
+      </div>
+    </section>
+
+    <!-- Sentence Translator Card -->
+    <section class="card neon-card">
+      <h2>Sentence Translator</h2>
+      <div class="input-group">
+        <label for="sentenceInput">Enter a sentence</label>
+        <textarea 
+          id="sentenceInput" 
+          [(ngModel)]="sentenceInput" 
+          (keyup.enter)="translateSentence()"
+          placeholder="e.g. I allow pigs to fly"
+          rows="3"></textarea>
+      </div>
+
+      <button class="neon-btn" (click)="translateSentence()">
+        TRANSLATE
+      </button>
+
+      <div class="output-area">
+        <span class="label">Result:</span>
+        <div class="result-text" [class.has-content]="sentenceOutput">
+          {{ sentenceOutput || '...' }}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>Original by <a href="https://github.com/KingDrahggo" target="_blank">KingDrahggo</a></p>
+  </footer>
+</div>

@@ -1,0 +1,201 @@
+@use "sass:color";
+
+/* Variables */
+$bg-color: #121212;
+$card-bg: #1e1e1e;
+$text-color: #e0e0e0;
+$neon-primary: #00ff9d;
+/* Neon Green */
+$neon-secondary: #00b8ff;
+/* Neon Blue */
+$neon-accent: #bd00ff;
+/* Neon Purple */
+$font-header: 'Orbitron', sans-serif;
+$font-body: 'Roboto Mono', monospace;
+
+/* Global Reset for Component */
+:host {
+    display: block;
+    min-height: 100vh;
+    background-color: $bg-color;
+    color: $text-color;
+    font-family: $font-body;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header */
+.main-header {
+    margin-bottom: 3rem;
+    text-align: center;
+
+    h1 {
+        font-family: $font-header;
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        margin: 0;
+
+        .neon-text {
+            color: $neon-primary;
+            text-shadow: 0 0 10px rgba($neon-primary, 0.5), 0 0 20px rgba($neon-primary, 0.3);
+        }
+    }
+}
+
+/* Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Card */
+.card {
+    background: $card-bg;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    h2 {
+        font-family: $font-header;
+        color: $neon-secondary;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        border-bottom: 2px solid rgba($neon-secondary, 0.2);
+        padding-bottom: 0.5rem;
+    }
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba($neon-secondary, 0.1);
+        border-color: rgba($neon-secondary, 0.3);
+    }
+}
+
+/* Form Elements */
+.input-group {
+    margin-bottom: 1.5rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        color: #aaa;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        background: color.adjust($bg-color, $lightness: -3%);
+        border: 1px solid #333;
+        border-radius: 4px;
+        color: #fff;
+        padding: 12px;
+        font-family: $font-body;
+        font-size: 1rem;
+        transition: all 0.3s;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+            border-color: $neon-primary;
+            box-shadow: 0 0 8px rgba($neon-primary, 0.2);
+        }
+    }
+
+    textarea {
+        resize: vertical;
+    }
+}
+
+
+/* Button */
+.neon-btn {
+    width: 100%;
+    background: transparent;
+    color: $neon-primary;
+    border: 2px solid $neon-primary;
+    padding: 12px 20px;
+    font-family: $font-header;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+
+    &:hover {
+        background: $neon-primary;
+        color: $bg-color;
+        box-shadow: 0 0 15px rgba($neon-primary, 0.6);
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Output Area */
+.output-area {
+    margin-top: 2rem;
+    background: black;
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 4px solid #333;
+    min-height: 80px;
+
+    .label {
+        display: block;
+        font-size: 0.75rem;
+        color: #666;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    .result-text {
+        font-size: 1.2rem;
+        color: #555;
+        word-break: break-word;
+
+        &.has-content {
+            color: $neon-accent;
+            text-shadow: 0 0 5px rgba($neon-accent, 0.3);
+            border-left: 2px solid $neon-accent;
+            padding-left: 0.5rem;
+            margin-left: -0.5rem;
+        }
+    }
+}
+
+/* Footer */
+.main-footer {
+    margin-top: auto;
+    padding-top: 2rem;
+    color: #666;
+    font-size: 0.8rem;
+
+    a {
+        color: $neon-secondary;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+            text-decoration: underline;
+            color: $neon-primary;
+        }
+    }
+}
